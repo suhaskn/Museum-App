@@ -3,8 +3,11 @@ function submitComment(){
     const name = inputField.value;
     const textArea = document.getElementById('msg');
     const msg = textArea.value;
-    console.log(name);
-    console.log(msg);
+    
+    if(doesNotPassAllValidations(name, msg)){
+        return null
+      }
+
     const comment = document.createElement('section');
     const h3 = document.createElement('h3');
     const p = document.createElement('p');
@@ -21,3 +24,25 @@ function submitComment(){
     inputField.value = null;
     textArea.value = null;
 }
+
+function doesNotPassAllValidations(name, msg) {
+    if (!name && !msg) {
+        alert('You forgot to fill in your name or message!')
+        return true;
+    }
+    else if(!name){
+        alert('You forgot to fill in your name!')
+        return true;
+    }
+    else if(!msg){
+        alert('You forgot to fill in your message!')
+        return true;
+    }
+  
+    if(msg.length > 280) {
+      alert('Your comment is too long')
+      return true
+    }
+  
+    return false
+  }
