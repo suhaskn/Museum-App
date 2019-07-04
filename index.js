@@ -328,6 +328,10 @@ const paintings = data.artObjects;
 
 function displayPainting(painting){
 
+    if(painting.webImage.width < 2500 || painting.principalOrFirstMaker === 'Gerard van Honthorst'){
+        return null;
+    }
+
 
         const gallery = document.getElementById('gallery');
         const link = "./pages/detail-page.html";
